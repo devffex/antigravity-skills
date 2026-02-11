@@ -5,8 +5,25 @@
 
 SKILL_NAME=$1
 REPO_URL="https://github.com/devffex/antigravity-skills.git"
+# Capture original directory
 ORIG_DIR=$(pwd)
-DEST_DIR="$ORIG_DIR/.agent/skills"
+
+# Detect Project Root (Search for .git or .agent upwards)
+find_root() {
+    local dir="$1"
+    while :; do
+        if [ -d "$dir/.git" ] || [ -d "$dir/.agent" ]; then
+            echo "$dir"
+            return
+        fi
+        [ "$dir" = "/" ] && break
+        dir=$(dirname "$dir")
+    done
+    echo "$ORIG_DIR" # Default to current dir if no root found
+}
+
+PROJECT_ROOT=$(find_root "$ORIG_DIR")
+DEST_DIR="$PROJECT_ROOT/.agent/skills"
 TEMP_DIR="/tmp/antigravity-install-$(date +%s)"
 
 if [ -z "$SKILL_NAME" ]; then
@@ -49,10 +66,14 @@ if [ -d "$DEST_DIR/$SKILL_NAME" ]; then
     rm -rf "$DEST_DIR/$SKILL_NAME"
 fi
 
-mv "$SKILL_SOURCE" "$DEST_DIR/"
+if ! mv "$SKILL_SOURCE" "$DEST_DIR/"; then
+    echo "❌ Error: Failed to move skill to $DEST_DIR"
+    cd / && rm -rf "$TEMP_DIR"
+    exit 1
+fi
 
 # Cleanup
 cd / && rm -rf "$TEMP_DIR"
 
-echo "✅ Success! '$SKILL_NAME' is now installed in $DEST_DIR"
+echo "✅ Success! '$SKILL_NAME' is now installed in: $(realpath "$DEST_DIR")"
 echo "🔄 Reload your Antigravity agent or restart your IDE to activate."
