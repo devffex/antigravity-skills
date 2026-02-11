@@ -11,6 +11,7 @@
 ## [INSTALLATION_ALGORITHMS]
 
 ### MODE: AUTOMATED_CURL
+(Execute from PROJECT_ROOT)
 `curl -sSL https://raw.githubusercontent.com/devffex/antigravity-skills/main/install.sh | bash -s [SKILL_ID]`
 
 ### MODE: MANUAL_SHELL

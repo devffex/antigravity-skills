@@ -5,7 +5,8 @@
 
 SKILL_NAME=$1
 REPO_URL="https://github.com/devffex/antigravity-skills.git"
-DEST_DIR=".agent/skills"
+ORIG_DIR=$(pwd)
+DEST_DIR="$ORIG_DIR/.agent/skills"
 TEMP_DIR="/tmp/antigravity-install-$(date +%s)"
 
 if [ -z "$SKILL_NAME" ]; then
