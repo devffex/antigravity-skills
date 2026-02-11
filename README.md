@@ -31,6 +31,7 @@ rm -rf /tmp/ag_lib
 | SKILL_ID | ROLE | ENTRY_POINT |
 | :--- | :--- | :--- |
 | codebase-helper | Codebase Intelligence & Deep Inspection | `./skills/codebase-helper/SKILL.md` |
+| api-standard-response | RFC 7807 Error Response Standardization | `./skills/api-standard-response/SKILL.md` |
 
 ## [AGENT_DIRECTIVES]
 1. SCAN: Registry for $SKILL_ID matching $TASK.
