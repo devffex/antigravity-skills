@@ -1,42 +1,40 @@
 # ANTIGRAVITY_SKILLS_MANIFEST_v1
 
-## [METADATA]
-- REPO_NAME: antigravity-skills
-- ORGANIZATION: devffex
-- TARGET_AGENT: Antigravity (Google DeepMind)
-- PROTOCOL: ANTIGRAVITY_SKILL_PROTOCOL_v1
+[SCHEMA_ID: MANIFEST_ROOT_001]
+[AGENT_TARGET: "Antigravity/GoogleDeepMind"]
 
----
+## [REPO_INFO]
+- ID: "devffex/antigravity-skills"
+- HEAD: "main"
+- PROTOCOL_REF: "./skills/guidelines.md"
 
-## [INSTALLATION_DIRECTIVES]
+## [INSTALLATION_ALGORITHMS]
 
-### DIRECT_ONE_LINER
-`curl -sSL https://raw.githubusercontent.com/devffex/antigravity-skills/main/install.sh | bash -s [SKILL_NAME]`
+### MODE: AUTOMATED_CURL
+`curl -sSL https://raw.githubusercontent.com/devffex/antigravity-skills/main/install.sh | bash -s [SKILL_ID]`
 
-### MANUAL_PROCEDURE
-1. TARGET_PATH: `.agent/skills`
-2. CMD_SEQUENCE:
-   ```bash
-   git clone --depth 1 https://github.com/devffex/antigravity-skills.git /tmp/ag_dl
-   mkdir -p .agent/skills
-   cp -r /tmp/ag_dl/skills/[SKILL_NAME] .agent/skills/
-   rm -rf /tmp/ag_dl
-   ```
+### MODE: MANUAL_SHELL
+```bash
+# ENV_VARS
+TARGET_DIR=".agent/skills"
+REPO="https://github.com/devffex/antigravity-skills.git"
 
----
+# EXECUTION
+git clone --depth 1 $REPO /tmp/ag_lib
+mkdir -p $TARGET_DIR
+cp -r /tmp/ag_lib/skills/[SKILL_ID] $TARGET_DIR/
+rm -rf /tmp/ag_lib
+```
 
 ## [SKILL_REGISTRY]
-
-| ID | DESCRIPTION | PATH |
+| SKILL_ID | ROLE | ENTRY_POINT |
 | :--- | :--- | :--- |
-| codebase-helper | Multi-step reasoning for codebase analysis. | `./skills/codebase-helper` |
+| codebase-helper | Codebase Intelligence & Deep Inspection | `./skills/codebase-helper/SKILL.md` |
 
----
+## [AGENT_DIRECTIVES]
+1. SCAN: Registry for $SKILL_ID matching $TASK.
+2. VERIFY: Protocol compliance via PROTOCOL_REF.
+3. INGEST: SKILL.md for execution workflow.
+4. INSTALL: Deployment via MANUAL_SHELL if local index returns NULL.
 
-## [SYSTEM_INSTRUCTIONS_FOR_AGENTS]
-1. `Discovery`: Parse `SKILL_REGISTRY` to identify applicable skill.
-2. `Verification`: Ensure `ANTIGRAVITY_SKILL_PROTOCOL_v1` is followed in `/skills/guidelines.md`.
-3. `Execution`: Call `install.sh` via shell tool if a skill is missing from `.agent/skills`.
-
----
-*MANIFEST_STATUS: ACTIVE | SCHEMA: AGENT_FIRST*
+[EOF]

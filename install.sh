@@ -27,10 +27,14 @@ mkdir -p "$TEMP_DIR"
 cd "$TEMP_DIR" || exit
 
 git clone --depth 1 --filter=blob:none --sparse "$REPO_URL" . &> /dev/null
-git sparse-checkout set "skills/$SKILL_NAME" &> /dev/null
 
-if [ ! -d "skills/$SKILL_NAME" ]; then
-    echo "❌ Error: Skill '$SKILL_NAME' not found in repository."
+# Try skills/ directory first, then fallback to root
+if git sparse-checkout set "skills/$SKILL_NAME" &> /dev/null && [ -d "skills/$SKILL_NAME" ]; then
+    SKILL_SOURCE="skills/$SKILL_NAME"
+elif git sparse-checkout set "$SKILL_NAME" &> /dev/null && [ -d "$SKILL_NAME" ]; then
+    SKILL_SOURCE="$SKILL_NAME"
+else
+    echo "❌ Error: Skill '$SKILL_NAME' not found in repository (checked /skills and root)."
     cd / && rm -rf "$TEMP_DIR"
     exit 1
 fi
@@ -44,7 +48,7 @@ if [ -d "$DEST_DIR/$SKILL_NAME" ]; then
     rm -rf "$DEST_DIR/$SKILL_NAME"
 fi
 
-mv "skills/$SKILL_NAME" "$DEST_DIR/"
+mv "$SKILL_SOURCE" "$DEST_DIR/"
 
 # Cleanup
 cd / && rm -rf "$TEMP_DIR"
