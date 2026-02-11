@@ -1,43 +1,42 @@
-# 🌌 Antigravity Skills Library
+# ANTIGRAVITY_SKILLS_MANIFEST_v1
 
-Welcome to the official repository for **Antigravity Skills**, engineered for high-performance agentic coding and deep codebase intelligence. These skills are optimized for the **Antigravity** agent by Google DeepMind.
-
-## 🚀 Installation
-
-To install a specific skill directly into your **Antigravity** environment, run the following one-liner:
-
-```bash
-# Example: Installing the codebase-helper skill
-curl -sSL https://raw.githubusercontent.com/julio/antigravity-skills/main/install.sh | bash -s codebase-helper
-```
-
-### Manual Installation (Standard Path)
-
-If you prefer manual installation, clone the skill folder into the **Antigravity** standard skills directory:
-
-```bash
-# Standard path for Antigravity project agents
-DEST_DIR=".agent/skills"
-mkdir -p $DEST_DIR
-
-# Clone and move (sparse checkout mode recommended for large libraries)
-git clone --depth 1 https://github.com/julio/antigravity-skills.git /tmp/antigravity-skills
-cp -r /tmp/antigravity-skills/skills/codebase-helper $DEST_DIR/
-rm -rf /tmp/antigravity-skills
-```
-
-## 🛠️ Available Skills
-
-| Skill | Description |
-| :--- | :--- |
-| **[codebase-helper](./skills/codebase-helper)** | Deep analysis and resolution of complex codebase questions. |
-
-## 📜 Development protocol
-
-All skills in this repository adhere to the [AGENT_SKILL_PROTOCOL_v1](./skills/guidelines.md), ensuring:
-- **Machine-Optimized Parsing**: Designed for direct agent consumption.
-- **Deterministic Workflows**: Predictable, multi-step code reasoning.
-- **Token Efficiency**: Externalized knowledge via `references/`.
+## [METADATA]
+- REPO_NAME: antigravity-skills
+- ORGANIZATION: devffex
+- TARGET_AGENT: Antigravity (Google DeepMind)
+- PROTOCOL: ANTIGRAVITY_SKILL_PROTOCOL_v1
 
 ---
-*Created by [Antigravity](https://deepmind.google/technologies/gemini/) - Advanced Agentic Coding*
+
+## [INSTALLATION_DIRECTIVES]
+
+### DIRECT_ONE_LINER
+`curl -sSL https://raw.githubusercontent.com/devffex/antigravity-skills/main/install.sh | bash -s [SKILL_NAME]`
+
+### MANUAL_PROCEDURE
+1. TARGET_PATH: `.agent/skills`
+2. CMD_SEQUENCE:
+   ```bash
+   git clone --depth 1 https://github.com/devffex/antigravity-skills.git /tmp/ag_dl
+   mkdir -p .agent/skills
+   cp -r /tmp/ag_dl/skills/[SKILL_NAME] .agent/skills/
+   rm -rf /tmp/ag_dl
+   ```
+
+---
+
+## [SKILL_REGISTRY]
+
+| ID | DESCRIPTION | PATH |
+| :--- | :--- | :--- |
+| codebase-helper | Multi-step reasoning for codebase analysis. | `./skills/codebase-helper` |
+
+---
+
+## [SYSTEM_INSTRUCTIONS_FOR_AGENTS]
+1. `Discovery`: Parse `SKILL_REGISTRY` to identify applicable skill.
+2. `Verification`: Ensure `ANTIGRAVITY_SKILL_PROTOCOL_v1` is followed in `/skills/guidelines.md`.
+3. `Execution`: Call `install.sh` via shell tool if a skill is missing from `.agent/skills`.
+
+---
+*MANIFEST_STATUS: ACTIVE | SCHEMA: AGENT_FIRST*

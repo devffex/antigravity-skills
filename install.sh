@@ -4,7 +4,7 @@
 # Usage: curl -sSL <URL>/install.sh | bash -s <skill-name>
 
 SKILL_NAME=$1
-REPO_URL="https://github.com/julio/antigravity-skills.git" # Replace with actual public repo URL
+REPO_URL="https://github.com/devffex/antigravity-skills.git"
 DEST_DIR=".agent/skills"
 TEMP_DIR="/tmp/antigravity-install-$(date +%s)"
 
