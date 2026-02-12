@@ -25,7 +25,7 @@ Standardizes the thinking process for solving issues, implementing features, or 
 1. DISCOVER: Ask stakeholders questions, check logs, and define the user pain point.
 2. DEFINE: Write Technical Requirements and a clear Problem Statement.
 3. DEVELOP: Sketch architectural paths. Map API contracts and UI states using:
-   - [API Standard](file:///home/julio/Work/devffex/skills/skills/api-standard-response/SKILL.md)
-   - [UI States Standard](file:///home/julio/Work/devffex/skills/skills/ui5-states-standard/SKILL.md)
+   - [API Standard](../api-standard-response/SKILL.md)
+   - [UI States Standard](../ui5-states-standard/SKILL.md)
 4. DELIVER: Build core logic, wrap in tests, implement Happy Path, and then Loading/Error states.
 5. VALIDATE: Ensure the solution solves the problem defined in Phase 2.

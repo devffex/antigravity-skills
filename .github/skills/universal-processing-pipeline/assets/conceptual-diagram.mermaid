@@ -1,0 +1,25 @@
+mermaid
+graph TD
+    A[1. Ingestion & Context] --> B[2. Integrity & Validation]
+    B --> C[3. Orchestration & Logic]
+    C --> D[4. Persistence & State]
+    D --> E[5. Normalization & Response]
+    E --> F[6. Delivery & Feedback]
+    F --> G[7. Post-Processing & Sides]
+
+    subgraph "Validation Loop"
+    B -.->|Fail| F
+    end
+
+    subgraph "Consumer View"
+    A
+    F
+    end
+
+    subgraph "Internal Engine"
+    B
+    C
+    D
+    E
+    G
+    end

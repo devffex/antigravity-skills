@@ -1,15 +1,18 @@
 # 🤖 ANTIGRAVITY_SKILL_PROTOCOL_v1
 
 ## [OBJECTIVE]
-Standardize skill creation for **Antigravity (Google DeepMind)** to ensure high discovery accuracy, low token consumption, and deterministic execution.
+Standardize skill creation for **Antigravity (Google DeepMind)** and **GitHub Copilot** to ensure high discovery accuracy, low token consumption, and deterministic execution.
 
 ---
 
 ## [ROOT_SPECIFICATION]
-All skills MUST reside within the `/skills` directory. Each skill folder is a self-contained execution unit.
+All skills MUST reside within the `.github/skills` and `.agent/skills` directories. Each skill folder is a self-contained execution unit.
+
+Canonical source lives in `.github/skills`. The `.agent/skills` folder mirrors the same skill structure for Antigravity.
 
 ```text
-/skills/[skill-id]/
+/.github/skills/[skill-id]/
+/.agent/skills/[skill-id]/
 ├── SKILL.md          # MANDATORY: Meta-data & Procedural Logic
 ├── scripts/          # EXECUTABLES: Atomic logic (sh, py, js, ts)
 ├── references/       # KNOWLEDGE: Technical specs, API docs, schemas

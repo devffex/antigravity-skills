@@ -33,4 +33,4 @@ Established to ensure that every request or system interaction is handled with i
 7. **FINALIZE (Stage 7)**: Trigger notifications, audits, or background jobs.
 
 # REFERENCE
-![Universal Processing Pipeline](file:///home/julio/Work/devffex/skills/skills/universal-processing-pipeline/assets/conceptual-diagram.mermaid)
+![Universal Processing Pipeline](./assets/conceptual-diagram.mermaid)
